@@ -1,0 +1,24 @@
+
+def is_palindrome(input_str):
+    cleaned_str = input_str.lower().replace(" ", "")  # Convert to lowercase and remove spaces
+    return cleaned_str == cleaned_str[::-1]
+
+def palindrome_checker(input_str):
+    # Checking if input contains multiple words or phrases
+    phrases = input_str.split(',')
+    
+    for phrase in phrases:
+        if is_palindrome(phrase.strip()):
+            print(f'"{phrase.strip()}"congratulations! your words, phrases, or numbers is a palindrome.')
+        else:
+            print(f'"{phrase.strip()}"Sorry your words, phrases, or numbers is not a palindrome.')
+
+def main():
+    user_input = input("Enter one or more words, phrases, or numbers separated by commas: ")
+    if user_input:
+        palindrome_checker(user_input)
+    else:
+        print("No input provided. Please enter a word, phrase, or number.")
+
+if __name__ == "__main__":
+    main()
