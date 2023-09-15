@@ -1,0 +1,58 @@
+import random
+
+quiz_question = [
+    
+    {
+        "question": "When is Engineers Day celebrated in India?",
+        "choices": ["15th September", "4th March", "25th November", "5th September"],
+        "answer": "15th September"
+    },
+    {
+        "question": "Engineers Day in India is celebrated on the birth anniversary of ",
+        "choices": ["A.P.J. Abdul Kalam", "Vikram Sarabhai", "M. Visvesvaraya", "Jagdish Chandra Bose"],
+        "answer": "M. Visvesvaraya"
+    },
+    {
+        "question": "In which year M Visvesvaraya was born?",
+        "choices": ["1859", "1860", "1861", "1863"],
+        "answer": "1860"
+    },
+    {
+        "question": "When is World Engineering Day celebrated?",
+        "choices": ["15th September", "4th March", "25th November", "5th September"],
+        "answer": "4th March"
+    },
+    {
+        "question": "Which is the Launch Center for the Indian Space Research Organization?",
+        "choices": ["Satish Dhawan Space Centre", "Vikram Sarabhai Space Centre", "None", "AIIMS"],
+        "answer": "Satish Dhawan Space Centre"
+    }
+
+
+]
+
+# Function to present a question and collect the user's answer
+def ask_question(q_data):
+    print(q_data["question"])
+    random.shuffle(q_data["choices"])
+    for idx, choice in enumerate(q_data["choices"], start=1):
+        print(f"{idx}. {choice}")
+    
+    user_answer = input("Enter the number of your answer: ")
+    return q_data["choices"][int(user_answer) - 1]
+
+user_score = 0
+
+random.shuffle(quiz_question)
+
+
+for q in quiz_question:
+    user_choice = ask_question(q)
+    if user_choice == q["answer"]:
+        print("Correct!\n")
+        user_score += 1
+    else:
+        print(f"Wrong answer ! The correct answer is: {q['answer']}\n")
+
+# Display the quiz total score
+print(f"Your Total score is: {user_score}/{len(quiz_question)}")
